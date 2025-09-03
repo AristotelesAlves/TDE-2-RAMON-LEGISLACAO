@@ -1,367 +1,99 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
-  <link as="style"
-    href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900"
-    onload="this.rel='stylesheet'" rel="stylesheet" />
-  <title>CyberGuard Brasil</title>
-  <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <style type="text/tailwindcss">
-    :root {
-        --primary-color: #1173d4;
-        --secondary-color: #f0f2f4;
-        --text-primary: #111418;
-        --text-secondary: #617589;
-      }
-      body {
-        font-family: 'Public Sans', sans-serif;
-      }
-      .section {
-        @apply py-16 px-4 sm:px-6 lg:px-8;
-      }
-      .section-title {
-        @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
-      }
-      .section-subtitle {
-        @apply mt-4 text-xl text-gray-600;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Infográfico: Cibercrimes e Legislação Brasileira</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gradient-to-br from-indigo-900 via-slate-900 to-black text-white antialiased">
 
-<body class="bg-white text-[var(--text-primary)]">
-  <div class="relative flex min-h-screen flex-col overflow-x-hidden">
-    <header
-      class="sticky top-0 z-50 w-full border-b border-solid border-[var(--secondary-color)] bg-white/80 backdrop-blur-lg">
-      <nav class="container mx-auto flex items-center justify-between px-6 py-4">
-        <a class="flex items-center gap-3 text-[var(--text-primary)]" href="#">
-          <svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"
-              fill="currentColor"></path>
-          </svg>
-          <span class="text-2xl font-bold">CyberGuard</span>
-        </a>
-        <div class="hidden items-center gap-8 md:flex">
-          <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-            href="#what-are-cybercrimes">O que são</a>
-          <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-            href="#laws">Leis</a>
-          <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-            href="#protect-yourself">Proteja-se</a>
-          <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-            href="#report">Denuncie</a>
-        </div>
+  <main class="max-w-6xl mx-auto p-6 md:p-12 space-y-10">
+    <!-- Header -->
+    <section class="bg-white/10 backdrop-blur-md rounded-3xl shadow-lg p-8 text-center border border-white/20">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-cyan-300">🔒 Cibercrimes e a Legislação Brasileira</h1>
+      <p class="mt-3 text-slate-200 text-lg">Infográfico acadêmico sobre leis, crimes digitais e prevenção.</p>
 
-        <button class="md:hidden text-[var(--text-primary)]">
-          <span class="material-symbols-outlined"> menu </span>
-        </button>
-      </nav>
-    </header>
-    <main>
-      <section class="relative">
-        <div class="absolute inset-0 bg-cover bg-center"
-          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbOG5k7W3UFsKwnNmuK_7WpQFzVbcmBteeNwLgaHqQ1N1dMbS9QVm9qroroTMRWoQxeyZIIOYsUuSfSyJaNS668x15EUX86xa4ljhhe6IPaJEcYLjCxIhq2SYkVnHvXdpZZjEoyhjYsMziAs3DWAqpSZMIWErHpvFeZ9k7_UTeflZpGtLL5AztpMDifVfwEkEib2Zc2LYRTpborOlpFTdIWdzB1SP2by87H6IjjIOZJPiUzhUJ1wB7sIqtLrzA6aZ7PUl5LlklBg");'>
-        </div>
-        <div class="absolute inset-0 bg-gray-900/60"></div>
-        <div class="relative mx-auto max-w-4xl px-6 py-24 text-center sm:py-32 lg:py-40">
-          <h1 class="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">Navegando pela Legislação de
-            Crimes Cibernéticos no Brasil</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-300">
-            Um guia completo para entender as leis, se proteger e saber como agir diante de ameaças digitais.
-          </p>
-          <div class="mt-10">
-            <a class="rounded-md bg-[var(--primary-color)] px-5 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all"
-              href="#what-are-cybercrimes">Saiba Mais</a>
-          </div>
-        </div>
-      </section>
-      <section class="section bg-white" id="what-are-cybercrimes">
-        <div class="container mx-auto max-w-4xl text-center">
-          <h2 class="section-title">O que são Crimes Cibernéticos?</h2>
-          <p class="section-subtitle">
-            Crimes cibernéticos, ou cybercrimes, são atividades criminosas que envolvem o uso de computadores, redes de
-            computadores ou dispositivos em rede. No Brasil, a legislação
-            abrange uma vasta gama de delitos, desde fraudes e roubo de dados até o discurso de ódio e perseguição
-            online. Compreender a natureza desses crimes é o primeiro e
-            essencial passo para a sua segurança digital.
-          </p>
-        </div>
-      </section>
-      <section class="section bg-[var(--secondary-color)]" id="laws">
-        <div class="container mx-auto max-w-4xl">
-          <div class="text-center mb-12">
-            <h2 class="section-title">Leis e Marco Legal</h2>
-            <p class="section-subtitle">
-              O Brasil possui um arcabouço legal robusto para combater os crimes cibernéticos, garantindo a punição dos
-              infratores e a proteção das vítimas.
-            </p>
-          </div>
-          <div class="space-y-4">
-            <details class="group rounded-lg border border-gray-200 bg-white p-6 shadow-sm" open="">
-              <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
-                Lei Carolina Dieckmann (Nº 12.735/2012)
-                <span class="transition group-open:rotate-180">
-                  <span class="material-symbols-outlined"> expand_more </span>
-                </span>
-              </summary>
-              <div class="mt-4 text-[var(--text-secondary)]">
-                Tipifica crimes informáticos, como a invasão de dispositivos para obter, adulterar ou destruir dados sem
-                autorização. As penas variam de detenção a multas.
-              </div>
-            </details>
-            <details class="group rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-              <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
-                Lei Geral de Proteção de Dados (LGPD - Nº 13.709/2018)
-                <span class="transition group-open:rotate-180">
-                  <span class="material-symbols-outlined"> expand_more </span>
-                </span>
-              </summary>
-              <div class="mt-4 text-[var(--text-secondary)]">
-                Regulamenta o tratamento de dados pessoais, inclusive nos meios digitais, por pessoa natural ou por
-                pessoa jurídica de direito público ou privado, com o objetivo de
-                proteger os direitos fundamentais de liberdade e de privacidade.
-              </div>
-            </details>
-            <details class="group rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-              <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
-                Marco Civil da Internet (Nº 12.965/2014)
-                <span class="transition group-open:rotate-180">
-                  <span class="material-symbols-outlined"> expand_more </span>
-                </span>
-              </summary>
-              <div class="mt-4 text-[var(--text-secondary)]">
-                Estabelece princípios, garantias, direitos e deveres para o uso da Internet no Brasil, regulando a
-                responsabilidade de provedores e a proteção da privacidade dos
-                usuários.
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-      <section class="section bg-white">
-        <div class="container mx-auto max-w-6xl">
-          <div class="text-center mb-12">
-            <h2 class="section-title">Exemplos de Crimes Cibernéticos</h2>
-          </div>
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-              <div class="flex-shrink-0">
-                <img alt="Ilustração de um cadeado digital simbolizando vazamento de dados"
-                  class="h-48 w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-sbEAGr4ryvKz42OHhIWj8qmxbpnC3Xmx2Y4fAAUl6l69pbE3wfan4X4lI9Z9pap-Pd2TSlll7jglAf5KFxDVauTpKDYSLeSyvqNmDw64WDBtBMlCqS0uOTdgDLkOoY77hQkevEJRtAD4oeaijuK9pJV-Z0kN9wOQ5WkLKrsdAAjG6r7Jn4TYROSkhAO04Sdk6QiiEQHjpCISZt5V_5nVOj4nh6Jm7p7R0FfRAd4RVT-BPdU1kevag48eTLXeexg1tx7m6PdeXg" />
-              </div>
-              <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                <div class="flex-1">
-                  <h3 class="mt-2 text-xl font-semibold text-[var(--text-primary)]">Vazamento de Dados</h3>
-                  <p class="mt-3 text-base text-[var(--text-secondary)]">Acesso e divulgação não autorizada de
-                    informações confidenciais, como dados pessoais e financeiros.</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-              <div class="flex-shrink-0">
-                <img alt="Ilustração de uma mão com um anzol representando fraude online"
-                  class="h-48 w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiUqbcMv8LACcBVSi4-IDeNUo3Lns3oQuO1Hv9Rama6dIPWVzShP6pZ-AlUD3NgyejqzI7DDzc7PJ7RDcLTeKkDMxu98INxVjNdzIWureSOiM-j96m5vRbO5-gXBw5T66u9g7hOwbt3uvND8Lp8uyv8K3zVOSllzM6s2DZEHMdv56YZG_eJF0u-c38px3tKwy97v_SoAF7mR9jfGFe_fi1tOHjzMfAm1ACL7NKOF5XNVRHc7TErd7r3AafHBwqgIkUxTa9kFfXvw" />
-              </div>
-              <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                <div class="flex-1">
-                  <h3 class="mt-2 text-xl font-semibold text-[var(--text-primary)]">Fraude Online (Phishing)</h3>
-                  <p class="mt-3 text-base text-[var(--text-secondary)]">Tentativas enganosas para obter informações
-                    sensíveis, como senhas e detalhes de cartão de crédito.</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-              <div class="flex-shrink-0">
-                <img alt="Ilustração de uma pessoa sendo seguida por um ponteiro de mouse, simbolizando cyberstalking"
-                  class="h-48 w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCPB0PDsv1uJ6BaVHeEug81kCvv-HC1YiXCOnTUqBBq3NuLlFI6-faa0919T2rasQ5C8qIIvuOy1eRyZyEzW8S5P73qVoqhZ_1ftByn0-N8Gp4PppSW0KPSkEGX31oXvfNkHozVd1amKG1hzrY1XgAtOluqei0N8-s9ooL9RUF-PYuijwdhpq76RoOzrm0ZdLQXv6aSKM9WqQXMGGrS_d-d5ib61Kc-W8zCDeDrpGD26ToS3nAdzB15iCxwjvOHshm1l7LBSFv0A" />
-              </div>
-              <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                <div class="flex-1">
-                  <h3 class="mt-2 text-xl font-semibold text-[var(--text-primary)]">Cyberstalking</h3>
-                  <p class="mt-3 text-base text-[var(--text-secondary)]">Uso da internet ou outros meios eletrônicos
-                    para perseguir ou assediar um indivíduo.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section bg-[var(--secondary-color)]" id="protect-yourself">
-        <div class="container mx-auto max-w-4xl">
-          <div class="text-center mb-12">
-            <h2 class="section-title">Como se Proteger</h2>
-            <p class="section-subtitle">Adote práticas de segurança para minimizar os riscos no ambiente digital.</p>
-          </div>
-          <div class="space-y-5">
-            <div class="flex items-start gap-4 rounded-lg bg-white p-4 shadow">
-              <div
-                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span class="material-symbols-outlined"> check </span>
-              </div>
-              <div>
-                <h3 class="font-semibold">Senhas Fortes e Únicas</h3>
-                <p class="text-[var(--text-secondary)]">Utilize combinações complexas e diferentes para cada conta.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4 rounded-lg bg-white p-4 shadow">
-              <div
-                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span class="material-symbols-outlined"> check </span>
-              </div>
-              <div>
-                <h3 class="font-semibold">Autenticação de Dois Fatores (2FA)</h3>
-                <p class="text-[var(--text-secondary)]">Ative uma camada extra de segurança para seus logins.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4 rounded-lg bg-white p-4 shadow">
-              <div
-                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span class="material-symbols-outlined"> check </span>
-              </div>
-              <div>
-                <h3 class="font-semibold">Cuidado com E-mails e Links Suspeitos</h3>
-                <p class="text-[var(--text-secondary)]">Não clique em links ou baixe anexos de fontes não confiáveis.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4 rounded-lg bg-white p-4 shadow">
-              <div
-                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span class="material-symbols-outlined"> check </span>
-              </div>
-              <div>
-                <h3 class="font-semibold">Mantenha Software Atualizado</h3>
-                <p class="text-[var(--text-secondary)]">Atualizações frequentemente corrigem falhas de segurança.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section bg-white" id="report">
-        <div class="container mx-auto max-w-4xl text-center">
-          <h2 class="section-title">Como Denunciar</h2>
-          <p class="section-subtitle">
-            Se você foi vítima de um crime cibernético, além de reunir provas como prints, e-mails e links, é possível
-            registrar um Boletim de Ocorrência online pela
-            <strong>Delegacia Virtual Nacional</strong>, acessando o site oficial, preenchendo seus dados e relatando o
-            ocorrido. Após a análise, o documento fica disponível para acompanhamento e tem a mesma validade de um
-            registro presencial.
-          </p>
-          <div class="mt-10">
-            <a class="rounded-md bg-[var(--primary-color)] px-5 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all"
-              href="https://delegaciavirtual.sinesp.gov.br/portal/" target="_blank" rel="noopener noreferrer">
-              Registrar Ocorrência
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- <section class="section bg-[var(--secondary-color)]" id="team">
-<div class="container mx-auto max-w-4xl text-center">
-<h2 class="section-title">Nossa Equipe</h2>
-<p class="section-subtitle">
-              Somos um time de especialistas em direito digital e segurança da informação, dedicados a orientar e proteger cidadãos e empresas no complexo cenário online.
-            </p>
-<div class="mt-12 flex justify-center -space-x-4">
-<img alt="Foto de perfil de um membro da equipe" class="inline-block h-16 w-16 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI-SVKREXC6IoeJqTYZb4AFgFwU5KmAywWFDqLxiRe23VP-w04XkrFLk7JZtlKZarIRvUl0hzAJ0JCADvslDRB5F1sA0Nt48amE8XJwGBTM8A_Su-ZwtMYHdxSQpSDWXSrJSDzi6Jzf_YW9w00SjNLNWo6mBRAzNMtM6hTRPohVckjhIPFF-TF91abRJnQbwdXpDZy-w2vZIeMIAzbd35rpPHjlX5OB0nrTGOMIZ8tQUQxcGMwLgifJ9mRsccG1SuzXuFZUuwqIw"/>
-<img alt="Foto de perfil de um membro da equipe" class="inline-block h-16 w-16 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlF7-soHvBIT7amA3wlB38mNNT9-4MudrxYTBkjEaI7xqzhZLgJTatHMYkO_jVMRr6gukv_yreOQGWiftr7U6c8y9DSUvSn4uHLmpUsv2u5-LX0AiGqaz5hIn6BJuEjdqfto3HmcyXSL5yz09yPwXtgjawfVpBweUlF1v3iXMJnaYBwxO9iTU4eAyAmTGmZDggKWU_ykh2UTJCHMNjiYM4HqZGFBY8q675Gy1pod-r0FoFvsP_fuqFUnq38ikb2R-Y2oZVHromTQ"/>
-<img alt="Foto de perfil de um membro da equipe" class="inline-block h-16 w-16 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzNOuvbnO5Nf4aUVS2wchql1YAcpSK-1gy1x74xhNUT6Ek3RFbmatK2AjSIjYJVU2rcPkQfSqxgnEWAShbzvuPwlGKzzx_xP_XnG01o2yUBELBcdKJnyBD7DEn4LL9pnt-OQwAtaYLP6DS2_xtpcsNPDDafNucbOXwmwn885C8preNZhf7LHP9_g9bxdtBx8SsS6CAx7HsZNe5NsqWL7SJIx271MsRjljtkbdl20Zss7Ie7B8uSYOLyKGvCMT9qCraKvYlyywqgQ"/>
-</div>
-</div>
-</section> -->
-      <section class="section bg-white bg-[var(--secondary-color)]">
-        <div class="container mx-auto max-w-4xl">
-          <div class="text-center mb-12">
-            <h2 class="section-title">Referências e Links Úteis</h2>
-            <p class="section-subtitle">Consulte as fontes oficiais para mais informações.</p>
-          </div>
-          <div class="divide-y divide-gray-200">
-
-            <a class="block p-4 hover:bg-gray-50 transition-colors"
-              href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12737.htm" target="_blank"
-              rel="noopener noreferrer">
-              <div class="flex items-center justify-between">
-                <p class="font-medium text-gray-900">Lei de Crimes Cibernéticos (Íntegra)</p>
-                <span class="material-symbols-outlined text-gray-400">chevron_right</span>
-              </div>
-            </a>
-
-            <a class="block p-4 hover:bg-gray-50 transition-colors"
-              href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank"
-              rel="noopener noreferrer">
-              <div class="flex items-center justify-between">
-                <p class="font-medium text-gray-900">Lei Geral de Proteção de Dados (LGPD)</p>
-                <span class="material-symbols-outlined text-gray-400">chevron_right</span>
-              </div>
-            </a>
-
-            <a class="block p-4 hover:bg-gray-50 transition-colors" href="https://new.safernet.org.br/denuncie"
-              target="_blank" rel="noopener noreferrer">
-              <div class="flex items-center justify-between">
-                <p class="font-medium text-gray-900">SaferNet Brasil - Denúncias de Crimes na Internet</p>
-                <span class="material-symbols-outlined text-gray-400">chevron_right</span>
-              </div>
-            </a>
-
-          </div>
-        </div>
-      </section>
-
-
-    </main>
-    <footer class="bg-gray-800 text-white">
-      <div class="container mx-auto px-6 py-12">
-        <div class="md:flex md:items-center md:justify-between">
-          <!-- <div class="flex justify-center space-x-6 md:order-2">
-            <a class="text-gray-400 hover:text-white" href="#">
-              <span class="sr-only">Twitter</span>
-              <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
-                </path>
-              </svg>
-            </a>
-            <a class="text-gray-400 hover:text-white" href="#">
-              <span class="sr-only">Facebook</span>
-              <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path clip-rule="evenodd"
-                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                  fill-rule="evenodd"></path>
-              </svg>
-            </a>
-            <a class="text-gray-400 hover:text-white" href="#">
-              <span class="sr-only">Instagram</span>
-              <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path clip-rule="evenodd"
-                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"
-                  fill-rule="evenodd"></path>
-              </svg>
-            </a>
-          </div> -->
-          <div class="mt-8 md:order-1 md:mt-0">
-            <p class="text-center text-base text-gray-400">© 2023. Todos os direitos reservados.</p>
-          </div>
-        </div>
-        <div class="mt-8 text-center text-sm text-gray-500">
-          <a class="hover:underline" href="#">Política de Privacidade</a>
-          <span class="mx-2">|</span>
-          <a class="hover:underline" href="#">Termos de Serviço</a>
-          <span class="mx-2">|</span>
-          <a class="hover:underline" href="#">Contato</a>
-        </div>
+      <!-- Integrantes -->
+      <div class="mt-6 text-slate-100">
+        <h2 class="font-semibold text-xl mb-2">👥 Integrantes</h2>
+        <ul class="grid sm:grid-cols-2 md:grid-cols-3 gap-2 text-sm md:text-base">
+          <li>Aristoteles Alves de Oliveira — 2022213417</li>
+          <li>Maria Diva Calou Leite — 201310050</li>
+          <li>Pedro Lucas Araujo Pinho Pierre — 2022213069</li>
+          <li>Francisco José Alves da Silva — 2022111885</li>
+          <li>Yuri Avner Cardoso Fontes — 2020110081</li>
+        </ul>
       </div>
+    </section>
+
+    <!-- Grid Content -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- O que são cibercrimes -->
+      <article class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl shadow-lg p-6 border border-indigo-400/30">
+        <h2 class="text-2xl font-bold mb-3">1️⃣ O que são Cibercrimes?</h2>
+        <p class="text-slate-100">Atos ilícitos praticados com uso de tecnologia digital.</p>
+        <ul class="mt-4 space-y-2 text-slate-100">
+          <li>💻 Invasão de dispositivos</li>
+          <li>🛑 Vazamento/roubo de dados</li>
+          <li>🎭 Golpes virtuais (phishing, clonagem)</li>
+          <li>📢 Disseminação de fake news</li>
+        </ul>
+      </article>
+
+      <!-- Principais leis -->
+      <article class="bg-gradient-to-br from-cyan-600 to-cyan-800 rounded-2xl shadow-lg p-6 border border-cyan-400/30">
+        <h2 class="text-2xl font-bold mb-3">2️⃣ Principais Leis no Brasil</h2>
+        <ul class="mt-4 space-y-4">
+          <li>
+            <p class="font-semibold">📜 Marco Civil da Internet (2014)</p>
+            <p class="text-slate-100">Privacidade, neutralidade e deveres online.</p>
+          </li>
+          <li>
+            <p class="font-semibold">📜 Lei Carolina Dieckmann (2012)</p>
+            <p class="text-slate-100">Invasão de dispositivo e roubo de dados.</p>
+          </li>
+          <li>
+            <p class="font-semibold">📜 LGPD (2018)</p>
+            <p class="text-slate-100">Proteção de dados pessoais e penalidades.</p>
+          </li>
+          <li>
+            <p class="font-semibold">📜 Lei 14.155 (2021)</p>
+            <p class="text-slate-100">Aumento de penas para fraudes digitais.</p>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Penas previstas -->
+      <article class="bg-gradient-to-br from-pink-600 to-pink-800 rounded-2xl shadow-lg p-6 border border-pink-400/30">
+        <h2 class="text-2xl font-bold mb-3">3️⃣ Penas Previstas</h2>
+        <ul class="space-y-3 text-slate-100">
+          <li>⚖️ <span class="font-semibold">Invasão de dispositivo:</span> 3m a 1 ano + multa</li>
+          <li>⚖️ <span class="font-semibold">Fraude eletrônica:</span> 4 a 8 anos + multa</li>
+          <li>⚖️ <span class="font-semibold">Divulgação de imagens íntimas:</span> 1 a 5 anos</li>
+        </ul>
+        <p class="mt-3 text-xs text-slate-200 italic">* Penas podem variar conforme agravantes.</p>
+      </article>
+
+      <!-- Como se proteger -->
+      <article class="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-2xl shadow-lg p-6 border border-emerald-400/30">
+        <h2 class="text-2xl font-bold mb-3">4️⃣ Como se Proteger</h2>
+        <ul class="space-y-3 text-slate-100">
+          <li>🔑 Autenticação em dois fatores</li>
+          <li>🚫 Desconfie de links suspeitos</li>
+          <li>🛡️ Antivírus e sistema atualizados</li>
+          <li>🔐 Senhas fortes e seguras</li>
+          <li>💾 Backups frequentes</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-white/10 backdrop-blur-md rounded-3xl shadow-lg p-6 text-center border border-white/20">
+      <p class="text-sm text-slate-200">👮‍♂️ Denúncias: Polícia Federal e Delegacias de Crimes Cibernéticos</p>
+      <p class="text-sm text-slate-200 mt-2">🌐 Mais informações: <a href="https://www.gov.br" class="underline text-cyan-300">gov.br</a></p>
     </footer>
-  </div>
-
+  </main>
 </body>
-
 </html>

@@ -30,14 +30,14 @@ const tdeItems = [
   },
   { 
     title: "TDE 3", 
-    subtitle: "Ética Digital",
+    subtitle: "---",
     url: "/tde3", 
     icon: BookOpen,
     description: "Ética e Responsabilidade Digital"
   },
   { 
     title: "TDE 4", 
-    subtitle: "Futuro Tech",
+    subtitle: "---",
     url: "/tde4", 
     icon: Zap,
     description: "Tendências e Futuro Tecnológico"

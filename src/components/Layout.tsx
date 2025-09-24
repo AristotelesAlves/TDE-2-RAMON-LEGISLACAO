@@ -20,7 +20,7 @@ export default function Layout({ children }: LayoutProps) {
             
             <div className="text-right">
               <h2 className="text-sm font-medium text-foreground">
-                Universidade Federal do Ceará
+                Centro Universitário Paraíso - UniFAP
               </h2>
               <p className="text-xs text-muted-foreground">
                 Curso de Sistemas de Informação

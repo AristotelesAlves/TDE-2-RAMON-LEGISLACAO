@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design System for TDE Academic Project - Cybersecurity & Legal Tech Theme */
+
+@layer base {
+  :root {
+    /* Core colors - Dark tech theme */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Cyber blue */
+    --primary: 195 100% 50%;
+    --primary-foreground: 240 10% 4%;
+    --primary-glow: 195 100% 70%;
+
+    /* Secondary - Tech purple */
+    --secondary: 260 70% 60%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Accent colors for different TDEs */
+    --accent-cyber: 195 100% 50%;        /* Cyan for TDE 1 */
+    --accent-ai: 280 100% 70%;           /* Purple for TDE 2 */
+    --accent-ethics: 160 100% 50%;       /* Green for TDE 3 */
+    --accent-future: 320 100% 60%;       /* Magenta for TDE 4 */
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 195 100% 50%;
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5% 20%;
+    --input: 240 5% 15%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(240 10% 4%), hsl(250 50% 15%), hsl(195 100% 10%));
+    --gradient-card: linear-gradient(135deg, hsl(240 10% 6%) 0%, hsl(240 8% 8%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(195 100% 50%) 0%, hsl(260 70% 60%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(195 100% 50% / 0.1) 0%, hsl(260 70% 60% / 0.1) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(195 100% 50% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(240 10% 2% / 0.8);
+    --shadow-elevated: 0 20px 60px -20px hsl(195 100% 50% / 0.2);
+
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar */
+    --sidebar-background: 240 10% 3%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 240 10% 4%;
+    --sidebar-accent: 240 8% 8%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 240 5% 15%;
+    --sidebar-ring: 195 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

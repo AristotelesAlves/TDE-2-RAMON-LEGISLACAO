@@ -30,10 +30,10 @@ const tdeItems = [
   },
   { 
     title: "TDE 3", 
-    subtitle: "---",
+    subtitle: "Cartilha LGPD",
     url: "/tde3", 
     icon: BookOpen,
-    description: "Ética e Responsabilidade Digital"
+    description: "Cartilha de Adequação à LGPD"
   },
   { 
     title: "TDE 4", 

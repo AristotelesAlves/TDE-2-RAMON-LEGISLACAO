@@ -1,6 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Shield, Users, Building2, Heart, TrendingUp, AlertCircle, CheckCircle2, XCircle, Info } from "lucide-react";
+import { Shield, AlertCircle, Users, Building2, Heart, TrendingUp, CheckCircle2, XCircle, Info, BarChart3, Database, Eye, Lock, UserCheck, Server } from "lucide-react";
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const TDE4 = () => {
   // Dados processados das pesquisas
@@ -34,797 +33,505 @@ const TDE4 = () => {
     importancia: { muitoImportante: 40, importante: 2 }
   };
 
+  // Dados para gráficos
+  const distribuicaoRespondentes = [
+    { name: 'Pessoas Físicas', value: 84, color: '#3B82F6' },
+    { name: 'Empresas', value: 10, color: '#10B981' },
+    { name: 'ONGs', value: 6, color: '#8B5CF6' }
+  ];
+
+  const conhecimentoLGPD = [
+    { grupo: 'Pessoas', conhece: 83, naoConhece: 17 },
+    { grupo: 'Empresas', conhece: 60, naoConhece: 40 },
+    { grupo: 'ONGs', conhece: 100, naoConhece: 0 }
+  ];
+
+  const maturidadeComparativa = [
+    { aspecto: 'Conhecimento', pessoas: 83, empresas: 60, ongs: 100 },
+    { aspecto: 'Possui Política', pessoas: 31, empresas: 0, ongs: 67 },
+    { aspecto: 'Conhece DPO', pessoas: 31, empresas: 20, ongs: 67 },
+    { aspecto: 'Sente-se Seguro', pessoas: 43, empresas: 20, ongs: 67 }
+  ];
+
+  const renderCustomLabel = (entry: any) => {
+    return `${entry.name}: ${entry.value}%`;
+  };
+
   const calcularPercentual = (valor: number, total: number) => {
     return ((valor / total) * 100).toFixed(1);
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header Institucional */}
-      <header className="bg-gradient-institutional text-primary-foreground shadow-lg">
-        <div className="container mx-auto px-6 py-12">
-          <div className="flex items-center gap-4 mb-6">
-            <Shield className="h-16 w-16" />
-            <div>
-              <h1 className="text-4xl font-bold mb-2">
-                Pesquisa sobre Adequação à LGPD
-              </h1>
-              <p className="text-xl opacity-95">
-                Análise Quantitativa e Exploratória do Nível de Conhecimento e Aplicação
-              </p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-6 md:p-12 space-y-10">
+      {/* Integrantes */}
+      <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-6 border border-border/50">
+        <h2 className="font-semibold text-xl mb-4 text-foreground flex items-center justify-center gap-2">
+          👥 Integrantes do Grupo
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm md:text-base">
+          {[
+            "Alice Santos Oliveira — 2022101234",
+            "Bruno Mendes Costa — 2022105678",
+            "Carolina Silva Lima — 2022109012",
+            "Diego Ferreira Alves — 2022103456",
+            "Elena Rodrigues Santos — 2022107890"
+          ].map((member, index) => (
+            <div key={index} className="p-3 bg-card/80 rounded-lg border border-border/30">
+              <span className="text-foreground/90">{member}</span>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-3xl shadow-2xl p-8 text-center border border-blue-500/30 overflow-hidden">
+        <div className="absolute inset-0 opacity-5"></div>
+        <div className="relative z-10">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Shield className="w-12 h-12 text-blue-400" />
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-blue-300">
+              Pesquisa sobre Adequação à LGPD
+            </h1>
           </div>
-          <div className="flex flex-wrap gap-4 mt-6">
-            <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-sm py-2 px-4">
-              <Users className="h-4 w-4 mr-2" />
-              50 Respondentes
-            </Badge>
-            <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-sm py-2 px-4">
-              <Building2 className="h-4 w-4 mr-2" />
-              Empresas: 5
-            </Badge>
-            <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-sm py-2 px-4">
-              <Heart className="h-4 w-4 mr-2" />
-              ONGs: 3
-            </Badge>
-            <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-sm py-2 px-4">
-              <Users className="h-4 w-4 mr-2" />
-              Pessoas Físicas: 42
-            </Badge>
+          <p className="text-xl text-blue-100/90 mb-6">
+            Análise Quantitativa e Exploratória do Nível de Conhecimento e Aplicação
+          </p>
+
+          <div className="bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
+            <h2 className="font-semibold text-2xl mb-4 text-blue-200">
+              📊 Metodologia da Pesquisa
+            </h2>
+            <p className="text-blue-100/80 leading-relaxed max-w-4xl mx-auto">
+              Pesquisa quantitativa e exploratória realizada entre 17 e 19 de novembro de 2025, 
+              com 50 respondentes (42 pessoas físicas, 5 empresas e 3 ONGs), utilizando formulários 
+              digitais com perguntas objetivas sobre conhecimento e aplicação da LGPD.
+            </p>
           </div>
         </div>
-      </header>
+      </section>
 
-      <main className="container mx-auto px-6 py-12">
-        {/* Resumo Executivo */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
-            <TrendingUp className="h-8 w-8 text-primary" />
-            Resumo Executivo
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-l-4 border-l-danger">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <AlertCircle className="h-5 w-5 text-danger" />
-                  Baixa Maturidade Empresarial
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-danger mb-2">40%</p>
-                <p className="text-sm text-muted-foreground">
-                  das empresas não iniciaram adequação à LGPD, mesmo coletando dados pessoais
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-warning">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <Info className="h-5 w-5 text-warning" />
-                  Desconhecimento do DPO
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-warning mb-2">69%</p>
-                <p className="text-sm text-muted-foreground">
-                  das pessoas físicas nunca ouviram falar em DPO (Encarregado de Dados)
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-success">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="h-5 w-5 text-success" />
-                  Reconhecimento da Importância
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-success mb-2">95%</p>
-                <p className="text-sm text-muted-foreground">
-                  dos respondentes consideram a LGPD muito importante para a proteção de dados
-                </p>
-              </CardContent>
-            </Card>
+      {/* Resumo Executivo */}
+      <article className="bg-gradient-to-br from-slate-800/80 to-blue-900/40 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-blue-500/30">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-400/30">
+            <TrendingUp className="w-7 h-7 text-blue-400" />
           </div>
-        </section>
+          <h2 className="text-3xl font-bold text-blue-300">Resumo Executivo</h2>
+        </div>
 
-        {/* Metodologia */}
-        <section className="mb-12">
-          <Card className="bg-gradient-card">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Shield className="h-6 w-6 text-primary" />
-                Metodologia da Pesquisa
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-primary mb-2">Tipo de Pesquisa</h4>
-                  <p className="text-muted-foreground">Quantitativa e exploratória</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-primary mb-2">Instrumento</h4>
-                  <p className="text-muted-foreground">Formulários com perguntas objetivas (Google Forms)</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-primary mb-2">Amostra</h4>
-                  <p className="text-muted-foreground">50 respondentes (42 pessoas, 5 empresas, 3 ONGs)</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-primary mb-2">Período de Coleta</h4>
-                  <p className="text-muted-foreground">17 a 19 de novembro de 2025</p>
-                </div>
-              </div>
-              <div className="mt-6 p-4 bg-secondary rounded-lg">
-                <p className="text-sm text-foreground">
-                  <strong>Critério Ético:</strong> Participação voluntária e consentimento para uso dos dados de forma anônima, 
-                  em conformidade com os princípios da própria LGPD.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Análise Comparativa por Grupo */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-6">Análise Comparativa por Grupo</h2>
-          
-          {/* Empresas */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-primary mb-4 flex items-center gap-2">
-              <Building2 className="h-6 w-6" />
-              Empresas ({empresasData.total} respondentes)
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Conhecimento da LGPD</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Sim</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-success h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.conheceLGPD.sim, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.conheceLGPD.sim, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Superficial</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.conheceLGPD.superficial, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.conheceLGPD.superficial, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.conheceLGPD.nao, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.conheceLGPD.nao, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Possui DPO Nomeado</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não sabe o que é</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.temDPO.naoSabe, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.temDPO.naoSabe, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Em implementação</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.temDPO.emImplementacao, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.temDPO.emImplementacao, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.temDPO.nao, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.temDPO.nao, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Maturidade em LGPD</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não iniciou</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.maturidade.naoIniciou, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.maturidade.naoIniciou, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Iniciando</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.maturidade.iniciando, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.maturidade.iniciando, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Preparada parcial</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-primary h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(empresasData.maturidade.parcial, empresasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(empresasData.maturidade.parcial, empresasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-red-950/30 p-5 rounded-xl border border-red-800/30">
+            <div className="flex items-center gap-2 mb-3">
+              <AlertCircle className="w-6 h-6 text-red-400" />
+              <h3 className="font-semibold text-lg text-red-200">Baixa Maturidade</h3>
             </div>
+            <p className="text-4xl font-bold text-red-300 mb-2">40%</p>
+            <p className="text-sm text-slate-300">
+              das empresas não iniciaram adequação à LGPD
+            </p>
+          </div>
 
-            <Card className="bg-danger/5 border-danger/20">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-3">
-                  <XCircle className="h-5 w-5 text-danger mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-danger mb-1">Ponto Crítico</p>
-                    <p className="text-sm text-foreground">
-                      <strong>100% das empresas</strong> coletam dados pessoais, mas <strong>60% não possuem</strong> Política 
-                      de Privacidade formalizada e <strong>60% não sabem o que é DPO</strong>, indicando alta 
-                      vulnerabilidade legal e exposição a sanções da ANPD.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="bg-yellow-950/30 p-5 rounded-xl border border-yellow-800/30">
+            <div className="flex items-center gap-2 mb-3">
+              <Info className="w-6 h-6 text-yellow-400" />
+              <h3 className="font-semibold text-lg text-yellow-200">Desconhecimento</h3>
+            </div>
+            <p className="text-4xl font-bold text-yellow-300 mb-2">69%</p>
+            <p className="text-sm text-slate-300">
+              das pessoas nunca ouviram falar em DPO
+            </p>
+          </div>
+
+          <div className="bg-green-950/30 p-5 rounded-xl border border-green-800/30">
+            <div className="flex items-center gap-2 mb-3">
+              <CheckCircle2 className="w-6 h-6 text-green-400" />
+              <h3 className="font-semibold text-lg text-green-200">Importância</h3>
+            </div>
+            <p className="text-4xl font-bold text-green-300 mb-2">95%</p>
+            <p className="text-sm text-slate-300">
+              consideram a LGPD muito importante
+            </p>
+          </div>
+        </div>
+      </article>
+
+      {/* Distribuição de Respondentes */}
+      <article className="bg-gradient-to-br from-slate-800/80 to-purple-900/40 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-purple-500/30">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center border border-purple-400/30">
+            <Eye className="w-7 h-7 text-purple-400" />
+          </div>
+          <h2 className="text-3xl font-bold text-purple-300">Distribuição de Respondentes</h2>
+        </div>
+
+        <div className="bg-slate-800/60 rounded-xl p-6 border border-slate-700/50">
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={distribuicaoRespondentes}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={renderCustomLabel}
+                outerRadius={100}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {distribuicaoRespondentes.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#1e293b', 
+                  border: '1px solid #475569',
+                  borderRadius: '8px',
+                  color: '#e2e8f0'
+                }} 
+              />
+            </PieChart>
+          </ResponsiveContainer>
+
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            <div className="text-center bg-blue-950/30 p-4 rounded-lg border border-blue-800/30">
+              <Users className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-blue-300">42</p>
+              <p className="text-sm text-slate-400">Pessoas Físicas</p>
+            </div>
+            <div className="text-center bg-green-950/30 p-4 rounded-lg border border-green-800/30">
+              <Building2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-green-300">5</p>
+              <p className="text-sm text-slate-400">Empresas</p>
+            </div>
+            <div className="text-center bg-purple-950/30 p-4 rounded-lg border border-purple-800/30">
+              <Heart className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-purple-300">3</p>
+              <p className="text-sm text-slate-400">ONGs</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* Análise Comparativa */}
+      <article className="bg-gradient-to-br from-slate-800/80 to-blue-900/40 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-blue-500/30">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-400/30">
+            <BarChart3 className="w-7 h-7 text-blue-400" />
+          </div>
+          <h2 className="text-3xl font-bold text-blue-300">Análise Comparativa por Grupo</h2>
+        </div>
+
+        <div className="bg-slate-800/60 rounded-xl p-6 border border-slate-700/50 mb-6">
+          <h3 className="font-semibold text-xl text-blue-200 mb-4">Maturidade em LGPD (%)</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={maturidadeComparativa}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+              <XAxis dataKey="aspecto" stroke="#94a3b8" />
+              <YAxis stroke="#94a3b8" />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#1e293b', 
+                  border: '1px solid #475569',
+                  borderRadius: '8px',
+                  color: '#e2e8f0'
+                }} 
+              />
+              <Legend />
+              <Bar dataKey="pessoas" fill="#3B82F6" name="Pessoas" />
+              <Bar dataKey="empresas" fill="#10B981" name="Empresas" />
+              <Bar dataKey="ongs" fill="#8B5CF6" name="ONGs" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Cards Detalhados */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Empresas */}
+          <div className="bg-green-950/30 p-5 rounded-xl border border-green-800/30">
+            <div className="flex items-center gap-2 mb-4">
+              <Building2 className="w-6 h-6 text-green-400" />
+              <h3 className="font-semibold text-lg text-green-200">Empresas</h3>
+            </div>
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Total</span>
+                <span className="font-bold text-green-300">{empresasData.total}</span>
+              </div>
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Conhece LGPD</span>
+                <span className="font-bold text-green-300">
+                  {calcularPercentual(empresasData.conheceLGPD.sim, empresasData.total)}%
+                </span>
+              </div>
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Possui DPO</span>
+                <span className="font-bold text-red-300">
+                  {calcularPercentual(empresasData.temDPO.sim, empresasData.total)}%
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-300">Maturidade Alta</span>
+                <span className="font-bold text-red-300">
+                  {calcularPercentual(empresasData.maturidade.parcial, empresasData.total)}%
+                </span>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-red-950/30 rounded-lg border border-red-800/30">
+              <p className="text-xs text-red-200 flex items-start gap-2">
+                <XCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>100% coletam dados, mas 80% não têm política formalizada</span>
+              </p>
+            </div>
           </div>
 
           {/* ONGs */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-primary mb-4 flex items-center gap-2">
-              <Heart className="h-6 w-6" />
-              Organizações do Terceiro Setor ({ongsData.total} respondentes)
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Conhecimento da LGPD</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Sim</span>
-                    <div className="flex items-center gap-2">
-                      <div className="w-32 bg-secondary rounded-full h-2">
-                        <div className="bg-success h-2 rounded-full w-full" />
-                      </div>
-                      <span className="text-sm font-semibold w-12 text-right">100%</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Possui Política de Privacidade</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Sim</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-success h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(ongsData.temPolitica.sim, ongsData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(ongsData.temPolitica.sim, ongsData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Em construção</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(ongsData.temPolitica.emConstrucao, ongsData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(ongsData.temPolitica.emConstrucao, ongsData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Possui DPO</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Sim</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-success h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(ongsData.temDPO.sim, ongsData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(ongsData.temDPO.sim, ongsData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(ongsData.temDPO.nao, ongsData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(ongsData.temDPO.nao, ongsData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+          <div className="bg-purple-950/30 p-5 rounded-xl border border-purple-800/30">
+            <div className="flex items-center gap-2 mb-4">
+              <Heart className="w-6 h-6 text-purple-400" />
+              <h3 className="font-semibold text-lg text-purple-200">ONGs</h3>
             </div>
-
-            <Card className="bg-success/5 border-success/20">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-success mb-1">Destaque Positivo</p>
-                    <p className="text-sm text-foreground">
-                      As ONGs demonstram <strong>maior maturidade</strong> em comparação às empresas: 100% conhecem a LGPD, 
-                      67% já possuem Política de Privacidade formalizada e 67% têm DPO nomeado. O terceiro setor mostra-se 
-                      mais consciente sobre a importância da proteção de dados.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Pessoas Físicas */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-primary mb-4 flex items-center gap-2">
-              <Users className="h-6 w-6" />
-              Pessoas Físicas ({pessoasData.total} respondentes)
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Conhece a LGPD</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Sim</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-success h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.conheceLGPD.sim, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.conheceLGPD.sim, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não tenho certeza</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.conheceLGPD.naoTenhoCerteza, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.conheceLGPD.naoTenhoCerteza, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.conheceLGPD.nao, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.conheceLGPD.nao, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Conhece o que é DPO</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Sei exatamente</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-success h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.conheceDPO.simExato, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.conheceDPO.simExato, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Já ouvi falar</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.conheceDPO.jaOuviu, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.conheceDPO.jaOuviu, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.conheceDPO.nao, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.conheceDPO.nao, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base">Sente-se Seguro na Internet</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Sim</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-success h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.senteSeguronca.sim, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.senteSeguronca.sim, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Parcialmente</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-warning h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.senteSeguronca.parcial, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.senteSeguronca.parcial, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Não se sente seguro</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-32 bg-secondary rounded-full h-2">
-                          <div 
-                            className="bg-danger h-2 rounded-full" 
-                            style={{ width: `${calcularPercentual(pessoasData.senteSeguronca.nao + pessoasData.senteSeguronca.pouco, pessoasData.total)}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-semibold w-12 text-right">
-                          {calcularPercentual(pessoasData.senteSeguronca.nao + pessoasData.senteSeguronca.pouco, pessoasData.total)}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <Card className="bg-warning/5 border-warning/20">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-warning mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-warning mb-1">Alerta Importante</p>
-                    <p className="text-sm text-foreground">
-                      Apesar de <strong>83% conhecerem a LGPD</strong>, apenas <strong>5% sabem exatamente o que é um DPO</strong> 
-                      e <strong>57% não se sentem seguros</strong> com suas informações pessoais na internet. Existe uma clara 
-                      lacuna entre conhecimento teórico e prático sobre direitos de proteção de dados.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Recomendações */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-6">Recomendações para Políticas Públicas</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="border-t-4 border-t-primary">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Building2 className="h-5 w-5 text-primary" />
-                  Para Empresas
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Programas de capacitação obrigatória</strong> sobre LGPD para empresas que coletam dados pessoais</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Incentivos fiscais</strong> para empresas que implementarem políticas de privacidade robustas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Criação de guias simplificados</strong> sobre nomeação e atribuições do DPO</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Fiscalização ativa da ANPD</strong> com foco em micro e pequenas empresas</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-t-4 border-t-primary">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-primary" />
-                  Para Cidadãos
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Campanhas educacionais massivas</strong> sobre direitos garantidos pela LGPD</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Criação de portal simplificado</strong> para exercício de direitos (exclusão, correção de dados)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Inclusão da LGPD</strong> em currículos escolares e programas de educação digital</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Canal de denúncias acessível</strong> para violações de dados pessoais</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-t-4 border-t-primary">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Heart className="h-5 w-5 text-primary" />
-                  Para o Terceiro Setor
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Reconhecimento e valorização</strong> das boas práticas já implementadas por ONGs</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Programas de apoio técnico</strong> para adequação completa à LGPD</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Criação de selos de conformidade</strong> para organizações certificadas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Parcerias com universidades</strong> para consultoria gratuita em proteção de dados</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-t-4 border-t-primary">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-primary" />
-                  Ações Transversais
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Fortalecimento da ANPD</strong> com recursos humanos e orçamentários adequados</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Desenvolvimento de tecnologias</strong> de privacy by design acessíveis</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Criação de observatório nacional</strong> para monitoramento contínuo da adequação à LGPD</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span><strong>Parcerias público-privadas</strong> para desenvolvimento de soluções de baixo custo</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Conclusão */}
-        <section>
-          <Card className="bg-gradient-institutional text-primary-foreground">
-            <CardHeader>
-              <CardTitle className="text-2xl">Conclusão</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm">
-              <p>
-                A pesquisa evidencia um <strong>cenário paradoxal</strong>: enquanto 95% dos respondentes reconhecem 
-                a importância da LGPD, a implementação prática permanece incipiente, especialmente no setor empresarial.
-              </p>
-              <p>
-                O <strong>desconhecimento generalizado sobre o papel do DPO</strong> (69% das pessoas e 60% das empresas) 
-                representa um obstáculo significativo para a efetiva proteção de dados no país.
-              </p>
-              <p>
-                As <strong>ONGs demonstram maior maturidade</strong>, sinalizando que organizações com propósito social 
-                podem estar mais sensíveis à importância da privacidade e proteção de dados.
-              </p>
-              <p>
-                Para que a LGPD cumpra seu papel transformador, são necessárias <strong>políticas públicas integradas</strong> 
-                que combinem educação, capacitação, incentivos e fiscalização, garantindo que tanto organizações quanto 
-                cidadãos compreendam e exerçam plenamente seus direitos e deveres.
-              </p>
-              <div className="mt-6 pt-4 border-t border-white/20">
-                <p className="text-xs opacity-90">
-                  Pesquisa realizada entre 17 e 19 de novembro de 2025 | Amostra: 50 respondentes | 
-                  Metodologia: Quantitativa e exploratória
-                </p>
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Total</span>
+                <span className="font-bold text-purple-300">{ongsData.total}</span>
               </div>
-            </CardContent>
-          </Card>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-8 mt-12">
-        <div className="container mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Shield className="h-5 w-5" />
-            <span className="font-semibold">Pesquisa sobre Adequação à LGPD</span>
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Conhece LGPD</span>
+                <span className="font-bold text-green-300">100%</span>
+              </div>
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Possui DPO</span>
+                <span className="font-bold text-green-300">
+                  {calcularPercentual(ongsData.temDPO.sim, ongsData.total)}%
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-300">Tem Política</span>
+                <span className="font-bold text-green-300">
+                  {calcularPercentual(ongsData.temPolitica.sim, ongsData.total)}%
+                </span>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-green-950/30 rounded-lg border border-green-800/30">
+              <p className="text-xs text-green-200 flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Maior maturidade: 100% conhecem e aplicam a LGPD</span>
+              </p>
+            </div>
           </div>
-          <p className="text-sm opacity-80">
-            Análise desenvolvida em conformidade com os princípios da Lei Geral de Proteção de Dados
+
+          {/* Pessoas */}
+          <div className="bg-blue-950/30 p-5 rounded-xl border border-blue-800/30">
+            <div className="flex items-center gap-2 mb-4">
+              <Users className="w-6 h-6 text-blue-400" />
+              <h3 className="font-semibold text-lg text-blue-200">Pessoas Físicas</h3>
+            </div>
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Total</span>
+                <span className="font-bold text-blue-300">{pessoasData.total}</span>
+              </div>
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Conhece LGPD</span>
+                <span className="font-bold text-green-300">
+                  {calcularPercentual(pessoasData.conheceLGPD.sim, pessoasData.total)}%
+                </span>
+              </div>
+              <div className="flex justify-between items-center pb-2 border-b border-slate-700/50">
+                <span className="text-slate-300">Conhece DPO</span>
+                <span className="font-bold text-red-300">
+                  {calcularPercentual(pessoasData.conheceDPO.simExato, pessoasData.total)}%
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-300">Sente-se Seguro</span>
+                <span className="font-bold text-yellow-300">
+                  {calcularPercentual(pessoasData.senteSeguronca.sim + pessoasData.senteSeguronca.parcial, pessoasData.total)}%
+                </span>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-yellow-950/30 rounded-lg border border-yellow-800/30">
+              <p className="text-xs text-yellow-200 flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Lacuna entre conhecimento teórico e prático sobre direitos</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* Riscos e Pilares */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Riscos Identificados */}
+        <article className="bg-gradient-to-br from-slate-800/80 to-red-900/40 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-red-500/30">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center border border-red-400/30">
+              <AlertCircle className="w-6 h-6 text-red-400" />
+            </div>
+            <h2 className="text-2xl font-bold text-red-300">Riscos Identificados</h2>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              '60% das empresas não sabem o que é DPO',
+              '40% das empresas não iniciaram adequação',
+              '69% das pessoas desconhecem o papel do DPO',
+              '57% das pessoas não se sentem seguras online',
+              'Lacuna entre conhecimento teórico e prático'
+            ].map((risco, idx) => (
+              <div key={idx} className="bg-red-950/30 p-3 rounded-lg border border-red-800/30 flex items-start gap-3">
+                <span className="text-red-400 font-bold text-sm flex-shrink-0">{idx + 1}.</span>
+                <p className="text-sm text-slate-300">{risco}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Pontos Positivos */}
+        <article className="bg-gradient-to-br from-slate-800/80 to-green-900/40 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-green-500/30">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center border border-green-400/30">
+              <CheckCircle2 className="w-6 h-6 text-green-400" />
+            </div>
+            <h2 className="text-2xl font-bold text-green-300">Pontos Positivos</h2>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { icon: Shield, name: '95% Reconhecem', desc: 'Importância da LGPD' },
+              { icon: Heart, name: '100% ONGs', desc: 'Conhecem a lei' },
+              { icon: Users, name: '83% Pessoas', desc: 'Ouviram falar' },
+              { icon: Database, name: '67% ONGs', desc: 'Têm DPO nomeado' }
+            ].map((ponto, idx) => {
+              const Icon = ponto.icon;
+              return (
+                <div key={idx} className="text-center bg-slate-800/60 p-4 rounded-lg border border-slate-700/50">
+                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-2 border border-green-400/30">
+                    <Icon className="w-6 h-6 text-green-400" />
+                  </div>
+                  <p className="text-xs font-bold text-green-200">{ponto.name}</p>
+                  <p className="text-xs text-slate-400">{ponto.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </article>
+      </div>
+
+      {/* Recomendações */}
+      <article className="bg-gradient-to-br from-slate-800/80 to-blue-900/40 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-blue-500/30">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-400/30">
+            <Database className="w-7 h-7 text-blue-400" />
+          </div>
+          <h2 className="text-3xl font-bold text-blue-300">Recomendações para Políticas Públicas</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            {
+              title: '1. Para Empresas',
+              items: [
+                'Programas de capacitação obrigatória',
+                'Incentivos fiscais para adequação',
+                'Guias simplificados sobre DPO',
+                'Fiscalização ativa da ANPD'
+              ],
+              icon: Building2,
+              color: 'green'
+            },
+            {
+              title: '2. Para Cidadãos',
+              items: [
+                'Campanhas educacionais massivas',
+                'Portal simplificado de direitos',
+                'LGPD em currículos escolares',
+                'Canal de denúncias acessível'
+              ],
+              icon: Users,
+              color: 'blue'
+            },
+            {
+              title: '3. Para o Terceiro Setor',
+              items: [
+                'Reconhecimento de boas práticas',
+                'Programas de apoio técnico',
+                'Selos de conformidade',
+                'Parcerias com universidades'
+              ],
+              icon: Heart,
+              color: 'purple'
+            },
+            {
+              title: '4. Ações Transversais',
+              items: [
+                'Fortalecimento da ANPD',
+                'Tecnologias privacy by design',
+                'Observatório nacional LGPD',
+                'Parcerias público-privadas'
+              ],
+              icon: Shield,
+              color: 'red'
+            }
+          ].map((medida, idx) => {
+            const Icon = medida.icon;
+            return (
+              <div key={idx} className={`bg-${medida.color}-950/30 p-5 rounded-xl border border-${medida.color}-800/30`}>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon className={`w-6 h-6 text-${medida.color}-400`} />
+                  <h3 className={`font-semibold text-lg text-${medida.color}-200`}>{medida.title}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {medida.items.map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
+                      <div className={`w-1.5 h-1.5 bg-${medida.color}-400 rounded-full`}></div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </article>
+
+      {/* Conclusão */}
+      <article className="bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-blue-400/40 text-center">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-full bg-blue-400/30 flex items-center justify-center border border-blue-300/50">
+            <Shield className="w-7 h-7 text-blue-300" />
+          </div>
+          <h2 className="text-3xl font-bold text-blue-200">Conclusão</h2>
+        </div>
+
+        <div className="max-w-4xl mx-auto space-y-6">
+          <p className="text-lg text-blue-100/90 leading-relaxed">
+            A pesquisa evidencia um <strong>cenário paradoxal</strong>: enquanto 95% dos respondentes reconhecem 
+            a importância da LGPD, a implementação prática permanece incipiente, especialmente no setor empresarial.
+          </p>
+
+          <p className="text-lg text-blue-100/90 leading-relaxed">
+            O <strong>desconhecimento generalizado sobre o DPO</strong> (69% das pessoas e 60% das empresas) 
+            representa um obstáculo significativo. As <strong>ONGs demonstram maior maturidade</strong>, 
+            sinalizando que organizações com propósito social podem estar mais sensíveis à privacidade.
+          </p>
+
+          <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-xl mt-4">
+            <p className="text-2xl font-bold italic text-white">"Proteger dados é proteger pessoas."</p>
+          </div>
+
+          <p className="text-sm text-blue-200/80 mt-6">
+            Para que a LGPD cumpra seu papel transformador, são necessárias <strong>políticas públicas integradas</strong> 
+            que combinem educação, capacitação, incentivos e fiscalização.
           </p>
         </div>
+      </article>
+
+      {/* Footer */}
+      <footer className="bg-slate-800/60 backdrop-blur-sm rounded-2xl shadow-lg p-6 text-center border border-slate-700/50">
+        <p className="text-sm text-slate-400">
+          Pesquisa sobre Adequação à LGPD | 17-19 Novembro 2025 | 50 Respondentes
+        </p>
       </footer>
     </div>
   );

@@ -68,19 +68,19 @@ const TDE4 = () => {
         <h2 className="font-semibold text-xl mb-4 text-foreground flex items-center justify-center gap-2">
           👥 Integrantes do Grupo
         </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm md:text-base">
-          {[
-            "Alice Santos Oliveira — 2022101234",
-            "Bruno Mendes Costa — 2022105678",
-            "Carolina Silva Lima — 2022109012",
-            "Diego Ferreira Alves — 2022103456",
-            "Elena Rodrigues Santos — 2022107890"
-          ].map((member, index) => (
-            <div key={index} className="p-3 bg-card/80 rounded-lg border border-border/30">
-              <span className="text-foreground/90">{member}</span>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm md:text-base">
+              {[
+                "Aristoteles Alves de Oliveira — 2022213417",
+                "Maria Diva Calou Leite — 201310050", 
+                "Pedro Lucas Araujo Pinho Pierre — 2022213069",
+                "Francisco José Alves da Silva — 2022111885",
+                "Yuri Avner Cardoso Fontes — 2020110081"
+              ].map((member, index) => (
+                <div key={index} className="p-3 bg-card/80 rounded-lg border border-border/30">
+                  <span className="text-foreground/90">{member}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
       </div>
 
       {/* Hero Section */}

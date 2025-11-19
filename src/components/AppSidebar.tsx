@@ -37,10 +37,10 @@ const tdeItems = [
   },
   { 
     title: "TDE 4", 
-    subtitle: "---",
+    subtitle: "LGPD: Nível de Maturidade",
     url: "/tde4", 
     icon: Zap,
-    description: "Tendências e Futuro Tecnológico"
+    description: "LGPD: Nível de Maturidade"
   },
 ];
 
